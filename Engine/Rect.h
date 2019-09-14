@@ -15,5 +15,10 @@ public:
 
 	void Draw(Graphics& gfx, Color color);
 	bool PosInRec(Vec2 pos);
+
+	int GetLeft() { return left; }
+	int GetRight() { return right; }
+	int GetTop() { return top; }
+	int GetBottom() { return bottom; }
 };
 

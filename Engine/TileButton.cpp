@@ -4,7 +4,7 @@ TileButton::TileButton() : Button()
 {
 }
 
-TileButton::TileButton(TileMap map, unsigned int TileID, Vec2 Pos) : Button(Pos)
+TileButton::TileButton(TileMap map, unsigned int TileID, Vec2 Pos, bool DebugBorder) : Button(Pos, Rect(Pos.GetX(), Pos.GetX() + TileMap::TileSize, Pos.GetY(), Pos.GetY() + TileMap::TileSize), DebugBorder)
 {
 	tileMap = map;
 	tileID = TileID;
@@ -26,3 +26,9 @@ void TileButton::Draw(Graphics& gfx)
 
 	Button::Draw(gfx);
 }
+
+void TileButton::SetTileID(unsigned int ID)
+{
+	tileID = ID;
+}
+

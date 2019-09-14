@@ -4,10 +4,11 @@ Button::Button()
 {
 }
 
-Button::Button(Vec2 Pos)
+Button::Button(Vec2 Pos, Rect rect, bool DebugBorder)
 {
 	pos = Pos;
-	rec = Rect(Pos.GetX(), Pos.GetX() + 16, Pos.GetY(), Pos.GetY() + 16);
+	rec = rect;
+	debugBorder = DebugBorder;
 	borderColor = Colors::White;
 }
 
@@ -17,12 +18,7 @@ Button::~Button()
 
 void Button::Update(Mouse& mouse)
 {
-	if (mouse.LeftIsPressed() &&
-		rec.PosInRec(mouse.GetPos()))
-	{
-		int a = 334;
-	}
-	else if (rec.PosInRec(mouse.GetPos()))
+	if (rec.PosInRec(mouse.GetPos()))
 	{
 		borderColor = Colors::Red;
 	}
@@ -35,4 +31,14 @@ void Button::Update(Mouse& mouse)
 void Button::Draw(Graphics& gfx)
 {
 	rec.Draw(gfx, borderColor);
+}
+
+bool Button::ButtonPressed(Mouse& mouse)
+{
+	if (mouse.LeftIsPressed() &&
+		rec.PosInRec(mouse.GetPos()))
+	{
+		return true;
+	}
+	return false;
 }
