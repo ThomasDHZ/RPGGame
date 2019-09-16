@@ -21,8 +21,8 @@ void TileButton::Update(Mouse& mouse)
 
 void TileButton::Draw(Graphics& gfx)
 {
-	Vec2 poz = Vec2(pos.GetX() / TileMap::TileSize, pos.GetY() / TileMap::TileSize);
-	tileMap.Draw(gfx, poz, tileID);
+	const Vec2 pos = Vec2(Pos.GetX() / TileMap::TileSize, Pos.GetY() / TileMap::TileSize);
+	tileMap.Draw(gfx, pos, tileID);
 
 	Button::Draw(gfx);
 }

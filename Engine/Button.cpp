@@ -1,12 +1,11 @@
 #include "Button.h"
 
-Button::Button()
+Button::Button() : GUIObject()
 {
 }
 
-Button::Button(Vec2 Pos, Rect rect, bool DebugBorder)
+Button::Button(Vec2 Pos, Rect rect, bool DebugBorder) : GUIObject(Pos, GUIObjectType::GButton)
 {
-	pos = Pos;
 	rec = rect;
 	debugBorder = DebugBorder;
 	borderColor = Colors::White;

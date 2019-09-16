@@ -1,20 +1,22 @@
 #pragma once
-#include "Vec2.h"
+#include "GUIObject.h"
 #include "Rect.h"
 #include "Mouse.h"
-class Panel
+class Panel : GUIObject
 {
 private:
-	Vec2 pos;
 	Rect rec;
 	Color panelColor;
 	bool FocusFlag;
+
+	std::vector<GUIObject> GUIObjectList;
+
 public:
 	Panel();
 	Panel(Vec2 Pos, Rect Rec, Color PanelColor);
-	~Panel();
+	virtual ~Panel();
 
-	void Update(Mouse& mouse);
-	void Draw(Graphics& gfx);
+	virtual void Update(Mouse& mouse);
+	virtual void Draw(Graphics& gfx);
 };
 
