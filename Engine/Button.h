@@ -18,5 +18,7 @@ public:
 	virtual void Update(Mouse& mouse);
 	virtual void Draw(Graphics& gfx);
 	virtual bool ButtonPressed(Mouse& mouse);
+
+	Rect GetRect() { return rec; }
 };
 
