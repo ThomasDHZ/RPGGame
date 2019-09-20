@@ -8,6 +8,7 @@ private:
 	unsigned int tileID;
 public:
 	TileButton();
+	TileButton(TileButton& tileButton);
 	TileButton(TileMap map, unsigned int TileID,  Vec2 Pos, bool DebugBorder = true);
 	~TileButton();
 
@@ -17,5 +18,6 @@ public:
 	void SetTileID(unsigned int ID);
 
 	unsigned int GetTileID() { return tileID; }
+	TileMap GetTileMap() { return tileMap; }
 };
 

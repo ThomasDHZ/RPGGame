@@ -4,6 +4,11 @@ GameObject::GameObject()
 {
 }
 
+GameObject::GameObject(GameObject& obj)
+{
+	Pos = obj.Pos;
+}
+
 GameObject::GameObject(Vec2 pos)
 {
 	Pos = pos;

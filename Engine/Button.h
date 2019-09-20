@@ -12,7 +12,9 @@ private:
 
 public:
 	Button();
+	Button(Button& button);
 	Button(Vec2 Pos, Rect rect, bool DebugBorder = true);
+	Button(Vec2 Pos, Rect rect, GUIObjectType type, bool DebugBorder = true);
 	virtual ~Button();
 
 	virtual void Update(Mouse& mouse);
@@ -20,5 +22,7 @@ public:
 	virtual bool ButtonPressed(Mouse& mouse);
 
 	Rect GetRect() { return rec; }
+
+	Button operator&();
 };
 

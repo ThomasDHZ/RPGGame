@@ -12,6 +12,7 @@ private:
 	bool FocusFlag;
 
 	std::vector<std::unique_ptr<GUIObject>> GUIObjectList;
+	std::vector<std::unique_ptr<Panel>> panel;
 
 public:
 	Panel();
@@ -21,6 +22,10 @@ public:
 	virtual void Update(Mouse& mouse);
 	virtual void Draw(Graphics& gfx);
 
+	void AddGUIObject(std::unique_ptr<GUIObject> GuiObj);
+
 	Panel& operator=(const Panel& rhs);
+
+	Rect GetRect() { return rec; }
 };
 

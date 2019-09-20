@@ -4,7 +4,21 @@ Button::Button() : GUIObject()
 {
 }
 
+Button::Button(Button& button)
+{
+	rec = button.rec;
+	borderColor = button.borderColor;
+	debugBorder = button.debugBorder;
+}
+
 Button::Button(Vec2 Pos, Rect rect, bool DebugBorder) : GUIObject(Pos, GUIObjectType::GButton)
+{
+	rec = rect;
+	debugBorder = DebugBorder;
+	borderColor = Colors::White;
+}
+
+Button::Button(Vec2 Pos, Rect rect, GUIObjectType type, bool DebugBorder) : GUIObject(Pos, type)
 {
 	rec = rect;
 	debugBorder = DebugBorder;
@@ -40,4 +54,9 @@ bool Button::ButtonPressed(Mouse& mouse)
 		return true;
 	}
 	return false;
+}
+
+Button Button::operator&()
+{
+	return Button();
 }

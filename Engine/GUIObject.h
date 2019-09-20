@@ -4,8 +4,11 @@
 
 enum GUIObjectType
 {
+	GNone,
 	GPanel,
-	GButton
+	GButton,
+	GTileButton,
+	GGrid
 };
 
 class GUIObject : public GameObject
@@ -14,6 +17,8 @@ private:
 	GUIObjectType GuiType;
 public:
 	GUIObject();
+	GUIObject(GUIObject& obj);
+	GUIObject(GUIObjectType type);
 	GUIObject(Vec2 pos, GUIObjectType type);
 	virtual ~GUIObject();
 

@@ -1,4 +1,5 @@
 #include "TileEditor.h"
+#include "Grid.h"
 
 TileEditor::TileEditor()
 {
@@ -7,6 +8,10 @@ TileEditor::TileEditor()
 TileEditor::TileEditor(TileMap tileMap)
 {
 	panel = Panel(Vec2(400, 400), Rect(100, 140, 100, 140), Colors::Blue);
+	panel.AddGUIObject(std::make_unique<Button>(Vec2(245, 245), Rect(200, 260, 200, 460)));
+	panel.AddGUIObject(std::make_unique<Grid>(Vec2(245, 245), Rect(200, 260, 200, 460), 15));
+	panel.AddGUIObject(std::make_unique<TileButton>(tileMap, 4 , Vec2(TileMap::TileSize * 6, TileMap::TileSize * 6)));
+
 	CurrentTileMap = tileMap;
 	int counter = 0;
 	for (int x = 0; x <= 50; x++)

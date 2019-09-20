@@ -4,7 +4,14 @@ TileButton::TileButton() : Button()
 {
 }
 
-TileButton::TileButton(TileMap map, unsigned int TileID, Vec2 Pos, bool DebugBorder) : Button(Pos, Rect(Pos.GetX(), Pos.GetX() + TileMap::TileSize, Pos.GetY(), Pos.GetY() + TileMap::TileSize), DebugBorder)
+TileButton::TileButton(TileButton& tileButton)
+{
+	Pos = tileButton.Pos;
+	tileMap = tileButton.tileMap;
+	tileID = tileButton.tileID;
+}
+
+TileButton::TileButton(TileMap map, unsigned int TileID, Vec2 Pos, bool DebugBorder) : Button(Pos, Rect(Pos.GetX(), Pos.GetX() + TileMap::TileSize, Pos.GetY(), Pos.GetY() + TileMap::TileSize), GUIObjectType::GTileButton, DebugBorder)
 {
 	tileMap = map;
 	tileID = TileID;

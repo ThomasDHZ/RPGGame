@@ -8,6 +8,7 @@ protected:
 	Vec2 Pos;
 public:
 	GameObject();
+	GameObject(GameObject& obj);
 	GameObject(Vec2 pos);
 	virtual ~GameObject();
 
