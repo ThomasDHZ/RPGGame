@@ -30,6 +30,7 @@
 #include "TileEditor.h"
 #include "TileButton.h"
 #include "TileMap.h"
+#include "SpriteLayer.h"
 class Game
 {
 public:
@@ -51,6 +52,8 @@ private:
 	TileEditor editor;
 	TileMap tileMap;
 	std::vector<Tile> OverWorldTiles;
+	SpriteLayer layer;
+	SpriteLayer layer2;
 	//TileButton button;
 	/********************************/
 };

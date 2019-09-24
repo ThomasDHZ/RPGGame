@@ -18,5 +18,7 @@ public:
 	
 	void Draw(Graphics& gfx, Vec2 TilePosition, int TileIndex);
 	int GetTileCount() { return Tiles.size(); }
+
+	Sprite GetTileMap() { return tileMap; }
 };
 

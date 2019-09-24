@@ -25,6 +25,7 @@
 class Sprite
 {
 private:
+	int Layer;
 	Color* pPixels = nullptr;
 	int Width;
 	int Height;
@@ -37,7 +38,9 @@ public:
 	~Sprite();
 	Sprite& operator=(const Sprite& rhs);
 
+	void PutPixel(int x, Color c);
 	void PutPixel(int x, int y, Color c);
+	Color GetPixel(int x) const;
 	Color GetPixel(int x, int y) const;
 	int GetWidth() const;
 	int GetHeight() const;

@@ -125,13 +125,23 @@ Sprite& Sprite::operator=(const Sprite& rhs)
 	return *this;
 }
 
+void Sprite::PutPixel(int x, Color c)
+{
+	pPixels[x] = c;
+}
+
 void Sprite::PutPixel(int x, int y, Color c)
 {
 	assert(x >= 0);
 	assert(x < Width);
 	assert(y >= 0);
 	assert(y < Height);
-	pPixels[y * Width + x] = c;
+	PutPixel(y * Width + x, c);
+}
+
+Color Sprite::GetPixel(int x) const
+{
+	return pPixels[x];
 }
 
 Color Sprite::GetPixel(int x, int y) const
@@ -140,7 +150,7 @@ Color Sprite::GetPixel(int x, int y) const
 	assert(x < Width);
 	assert(y >= 0);
 	assert(y < Height);
-	return pPixels[y * Width + x];
+	return GetPixel(y * Width + x);
 }
 
 int Sprite::GetWidth() const

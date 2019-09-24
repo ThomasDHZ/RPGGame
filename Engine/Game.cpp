@@ -28,6 +28,13 @@ Game::Game( MainWindow& wnd )
 {
 	tileMap = TileMap("DQTiles.bmp");
 	editor = TileEditor(tileMap);
+	layer = SpriteLayer(Vec2(800, 600));
+	layer.AddSprite(LayerObject(Vec2(0,0),tileMap.GetTileMap()));
+	layer.AddSprite(LayerObject(Vec2(400, 0), tileMap.GetTileMap()));
+
+	layer2 = SpriteLayer(Vec2(800, 600));
+	layer2.AddSprite(LayerObject(Vec2(100, 0), tileMap.GetTileMap()));
+	layer2.AddSprite(LayerObject(Vec2(500, 0), tileMap.GetTileMap()));
 	//button = TileButton(&tileMap, 1, Vec2{ 512,512 });
 }
 
@@ -41,12 +48,16 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	editor.Update(wnd.mouse);
+	layer.Update(Vec2(800, 600));
+	layer2.Update(Vec2(800, 600));
+	//editor.Update(wnd.mouse);
 	///button.Update(wnd.mouse);
 }
 
 void Game::ComposeFrame()
 {
-	editor.Draw(gfx);
+	layer.Draw(gfx);
+	layer2.Draw(gfx);
+	//editor.Draw(gfx);
 	//button.Draw(gfx,1);
 }
