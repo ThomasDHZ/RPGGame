@@ -13,6 +13,7 @@ private:
 	Vec2 ScreenSize;
 	std::vector<LayerObject> SpriteList;
 	Sprite LayerSprite;
+	bool LayerDebug;
 
 public:
 	SpriteLayer();
