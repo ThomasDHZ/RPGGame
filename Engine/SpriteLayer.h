@@ -13,7 +13,8 @@ private:
 	Vec2 ScreenSize;
 	std::vector<LayerObject> SpriteList;
 	Sprite LayerSprite;
-	bool LayerDebug;
+	bool DebugLayerFlag;
+	bool ShowLayerFlag;
 
 public:
 	SpriteLayer();
@@ -23,7 +24,11 @@ public:
 	void Update(Vec2 screenSize);
 	void AddSprite(LayerObject& sprite);
 	void Draw(Graphics& gfx);
+	void SetDebugLayerFlag(bool flag);
+	void SetShowLayerFlag(bool flag);
 
 	Sprite GetSpriteLayer() const { return LayerSprite; }
+	bool GetDebugLayerFlag() const { return DebugLayerFlag; }
+	bool GetShowLayerFlag() const { return ShowLayerFlag; }
 };
 

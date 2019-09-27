@@ -27,10 +27,12 @@ Game::Game( MainWindow& wnd )
 	gfx( wnd )
 {
 	tileMap = TileMap("DQTiles.bmp");
-	editor = TileEditor(tileMap);
+
+	//editor = TileEditor(tileMap);
 	GraphicsLayerList.emplace_back(Vec2(800, 600));
 	GraphicsLayerList.emplace_back(Vec2(800, 600));
 	GraphicsLayerList.emplace_back(Vec2(800, 600));
+	GameObjectList.emplace_back(Panel(Vec2(30, 30), Rect(30, 260, 30, 260), Colors::Blue));
 	//button = TileButton(&tileMap, 1, Vec2{ 512,512 });
 }
 
@@ -44,35 +46,76 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	GraphicsLayerList[0].Update(Vec2(800, 600));
 	GraphicsLayerList[1].Update(Vec2(800, 600));
 	GraphicsLayerList[2].Update(Vec2(800, 600));
+
+	if (wnd.kbd.KeyIsPressed('1'))
+	{
+		GraphicsLayerList[0].SetShowLayerFlag(true);
+		GraphicsLayerList[0].SetDebugLayerFlag(true);
+		GraphicsLayerList[1].SetShowLayerFlag(false);
+		GraphicsLayerList[1].SetDebugLayerFlag(false);
+		GraphicsLayerList[2].SetShowLayerFlag(false);
+		GraphicsLayerList[2].SetDebugLayerFlag(false);
+	}
+	else if (wnd.kbd.KeyIsPressed('2'))
+	{
+		GraphicsLayerList[0].SetShowLayerFlag(false);
+		GraphicsLayerList[0].SetDebugLayerFlag(false);
+		GraphicsLayerList[1].SetShowLayerFlag(true);
+		GraphicsLayerList[1].SetDebugLayerFlag(true);
+		GraphicsLayerList[2].SetShowLayerFlag(false);
+		GraphicsLayerList[2].SetDebugLayerFlag(false);
+	}
+	else if (wnd.kbd.KeyIsPressed('3'))
+	{
+		GraphicsLayerList[0].SetShowLayerFlag(false);
+		GraphicsLayerList[0].SetDebugLayerFlag(false);
+		GraphicsLayerList[1].SetShowLayerFlag(false);
+		GraphicsLayerList[1].SetDebugLayerFlag(false);
+		GraphicsLayerList[2].SetShowLayerFlag(true);
+		GraphicsLayerList[2].SetDebugLayerFlag(true);
+	}
+	else if (wnd.kbd.KeyIsPressed('4'))
+	{
+		GraphicsLayerList[0].SetShowLayerFlag(true);
+		GraphicsLayerList[0].SetDebugLayerFlag(false);
+		GraphicsLayerList[1].SetShowLayerFlag(true);
+		GraphicsLayerList[1].SetDebugLayerFlag(false);
+		GraphicsLayerList[2].SetShowLayerFlag(true);
+		GraphicsLayerList[2].SetDebugLayerFlag(false);
+	}
 	//editor.Update(wnd.mouse);
 	///button.Update(wnd.mouse);
 }
 
 void Game::ComposeFrame()
 {
-	GraphicsLayerList[1].AddSprite(LayerObject(Vec2(0, 0), tileMap.GetTileMap()));
-	GraphicsLayerList[1].AddSprite(LayerObject(Vec2(400, 0), tileMap.GetTileMap()));
+	GraphicsLayerList[0].AddSprite(LayerObject(Vec2(0, 0), tileMap.GetTileMap()));
+	GraphicsLayerList[0].AddSprite(LayerObject(Vec2(400, 0), tileMap.GetTileMap()));
 
-	GraphicsLayerList[2].AddSprite(LayerObject(Vec2(100, 0), tileMap.GetTileMap()));
-	GraphicsLayerList[2].AddSprite(LayerObject(Vec2(500, 0), tileMap.GetTileMap()));
+	GraphicsLayerList[1].AddSprite(LayerObject(Vec2(100, 0), tileMap.GetTileMap()));
+	GraphicsLayerList[1].AddSprite(LayerObject(Vec2(500, 0), tileMap.GetTileMap()));
 
 	for (auto Obj : GameObjectList)
 	{
+		auto a = Obj.GetObjectLayer();
 		switch (Obj.GetObjectLayer())
 		{
 			case DrawLayer::DBackground: break;
 			case DrawLayer::DSprite: break;
-			case DrawLayer::DGUI: break;
+			case DrawLayer::DGUI: GraphicsLayerList[DrawLayer::DGUI].AddSprite(LayerObject(Obj.GetPos(), Obj.GetSprite()));  break;
 		};
 	}
 
 	for (auto Layer : GraphicsLayerList)
 	{
-		Layer.Draw(gfx);
+		if (Layer.GetShowLayerFlag())
+		{
+			Layer.Draw(gfx);
+		}
 	}
-
 	//editor.Draw(gfx);
 	//button.Draw(gfx,1);
 }

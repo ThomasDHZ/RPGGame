@@ -20,5 +20,7 @@ public:
 	int GetRight() { return right; }
 	int GetTop() { return top; }
 	int GetBottom() { return bottom; }
+	int GetWidth() { return right - left; }
+	int GetHeight() { return bottom - top; }
 };
 

@@ -49,10 +49,11 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
-	TileEditor editor;
+	//TileEditor editor;
 	TileMap tileMap;
+	Panel panel;
 	std::vector<SpriteLayer> GraphicsLayerList;
-	std::vector<GameObject> GameObjectList;
+	std::vector<Panel> GameObjectList;
 	std::vector<Tile> OverWorldTiles;
 	SpriteLayer layer;
 	SpriteLayer layer2;

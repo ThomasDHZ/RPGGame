@@ -4,15 +4,15 @@
 #include "Mouse.h"
 #include <memory>
 
-class Panel : GUIObject
+class Panel : public GUIObject
 {
 private:
 	Rect rec;
 	Color panelColor;
 	bool FocusFlag;
 
-	std::vector<std::unique_ptr<GUIObject>> GUIObjectList;
-	std::vector<std::unique_ptr<Panel>> panel;
+	//std::vector<std::unique_ptr<GUIObject>> GUIObjectList;
+	//std::vector<std::unique_ptr<Panel>> panel;
 
 public:
 	Panel();

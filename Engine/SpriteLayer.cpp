@@ -9,7 +9,8 @@ SpriteLayer::SpriteLayer(Vec2 screenSize)
 {
 	ScreenSize = screenSize;
 	LayerSprite = Sprite(screenSize.GetX(), screenSize.GetY());
-	LayerDebug = false;
+	DebugLayerFlag = false;
+	ShowLayerFlag = true;
 }
 
 SpriteLayer::~SpriteLayer()
@@ -46,7 +47,7 @@ void SpriteLayer::Draw(Graphics& gfx)
 	{
 		for (int y = 0; y <= LayerSprite.GetHeight() - 1; y++)
 		{
-			if (!LayerDebug)
+			if (!DebugLayerFlag)
 			{
 				if (LayerSprite.GetPixel(x, y) != Colors::Magenta)
 				{
@@ -59,4 +60,14 @@ void SpriteLayer::Draw(Graphics& gfx)
 			}
 		}
 	}
+}
+
+void SpriteLayer::SetDebugLayerFlag(bool flag)
+{
+	DebugLayerFlag = flag;
+}
+
+void SpriteLayer::SetShowLayerFlag(bool flag)
+{
+	ShowLayerFlag = flag;
 }

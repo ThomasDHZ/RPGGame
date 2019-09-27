@@ -9,6 +9,8 @@ GUIObject::GUIObject(GUIObject& obj)
 {
 	Pos = obj.Pos;
 	GuiType = obj.GuiType;
+	ObjectSprite = obj.ObjectSprite;
+	ObjectLayer = obj.ObjectLayer;
 }
 
 GUIObject::GUIObject(GUIObjectType type)

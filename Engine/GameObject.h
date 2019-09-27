@@ -12,8 +12,9 @@ enum DrawLayer
 class GameObject
 {
 private:
-	DrawLayer ObjectLayer;
 protected:
+	DrawLayer ObjectLayer;
+	Sprite ObjectSprite;
 	Vec2 Pos;
 public:
 	GameObject();
@@ -24,6 +25,7 @@ public:
 	virtual void Update();
 	virtual void Draw(Graphics& gfx);
 
+	Sprite GetSprite() { return ObjectSprite; }
 	Vec2 GetPos() { return Pos; }
 	DrawLayer GetObjectLayer() { return ObjectLayer; }
 };
