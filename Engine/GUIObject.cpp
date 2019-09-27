@@ -16,7 +16,7 @@ GUIObject::GUIObject(GUIObjectType type)
 	GuiType = type;
 }
 
-GUIObject::GUIObject(Vec2 pos, GUIObjectType type) : GameObject(pos)
+GUIObject::GUIObject(Vec2 pos, GUIObjectType type) : GameObject(pos, DrawLayer::DGUI)
 {
 	GuiType = type;
 }

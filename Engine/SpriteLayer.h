@@ -21,7 +21,7 @@ public:
 	~SpriteLayer();
 
 	void Update(Vec2 screenSize);
-	void AddSprite(LayerObject sprite);
+	void AddSprite(LayerObject& sprite);
 	void Draw(Graphics& gfx);
 
 	Sprite GetSpriteLayer() const { return LayerSprite; }

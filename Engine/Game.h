@@ -51,9 +51,12 @@ private:
 	/*  User Variables              */
 	TileEditor editor;
 	TileMap tileMap;
+	std::vector<SpriteLayer> GraphicsLayerList;
+	std::vector<GameObject> GameObjectList;
 	std::vector<Tile> OverWorldTiles;
 	SpriteLayer layer;
 	SpriteLayer layer2;
+	SpriteLayer layer3;
 	//TileButton button;
 	/********************************/
 };

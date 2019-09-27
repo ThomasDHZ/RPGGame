@@ -27,22 +27,17 @@ void SpriteLayer::Update(Vec2 screenSize)
 			LayerSprite.PutPixel(x, y, Colors::Magenta);
 		}
 	}
-
-	for (auto sprite : SpriteList)
-	{
-		for (int x = 0; x <= sprite.sprite.GetWidth() - 1; x++)
-		{
-			for (int y = 0; y <= sprite.sprite.GetHeight() - 1; y++)
-			{
-				LayerSprite.PutPixel(sprite.pos.GetX() + x, sprite.pos.GetY() + y, sprite.sprite.GetPixel(x, y));
-			}
-		}
-	}
 }
 
-void SpriteLayer::AddSprite(LayerObject sprite)
+void SpriteLayer::AddSprite(LayerObject& sprite)
 {
-	SpriteList.emplace_back(sprite);
+	for (int x = 0; x <= sprite.sprite.GetWidth() - 1; x++)
+	{
+		for (int y = 0; y <= sprite.sprite.GetHeight() - 1; y++)
+		{
+			LayerSprite.PutPixel(sprite.pos.GetX() + x, sprite.pos.GetY() + y, sprite.sprite.GetPixel(x, y));
+		}
+	}
 }
 
 void SpriteLayer::Draw(Graphics& gfx)

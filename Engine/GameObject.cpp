@@ -7,11 +7,13 @@ GameObject::GameObject()
 GameObject::GameObject(GameObject& obj)
 {
 	Pos = obj.Pos;
+	ObjectLayer = obj.ObjectLayer;
 }
 
-GameObject::GameObject(Vec2 pos)
+GameObject::GameObject(Vec2 pos, DrawLayer layer)
 {
 	Pos = pos;
+	ObjectLayer = layer;
 }
 
 GameObject::~GameObject()

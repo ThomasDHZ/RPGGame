@@ -28,13 +28,9 @@ Game::Game( MainWindow& wnd )
 {
 	tileMap = TileMap("DQTiles.bmp");
 	editor = TileEditor(tileMap);
-	layer = SpriteLayer(Vec2(800, 600));
-	layer.AddSprite(LayerObject(Vec2(0,0),tileMap.GetTileMap()));
-	layer.AddSprite(LayerObject(Vec2(400, 0), tileMap.GetTileMap()));
-
-	layer2 = SpriteLayer(Vec2(800, 600));
-	layer2.AddSprite(LayerObject(Vec2(100, 0), tileMap.GetTileMap()));
-	layer2.AddSprite(LayerObject(Vec2(500, 0), tileMap.GetTileMap()));
+	GraphicsLayerList.emplace_back(Vec2(800, 600));
+	GraphicsLayerList.emplace_back(Vec2(800, 600));
+	GraphicsLayerList.emplace_back(Vec2(800, 600));
 	//button = TileButton(&tileMap, 1, Vec2{ 512,512 });
 }
 
@@ -48,16 +44,35 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	layer.Update(Vec2(800, 600));
-	layer2.Update(Vec2(800, 600));
+	GraphicsLayerList[1].Update(Vec2(800, 600));
+	GraphicsLayerList[2].Update(Vec2(800, 600));
 	//editor.Update(wnd.mouse);
 	///button.Update(wnd.mouse);
 }
 
 void Game::ComposeFrame()
 {
-	layer.Draw(gfx);
-	layer2.Draw(gfx);
+	GraphicsLayerList[1].AddSprite(LayerObject(Vec2(0, 0), tileMap.GetTileMap()));
+	GraphicsLayerList[1].AddSprite(LayerObject(Vec2(400, 0), tileMap.GetTileMap()));
+
+	GraphicsLayerList[2].AddSprite(LayerObject(Vec2(100, 0), tileMap.GetTileMap()));
+	GraphicsLayerList[2].AddSprite(LayerObject(Vec2(500, 0), tileMap.GetTileMap()));
+
+	for (auto Obj : GameObjectList)
+	{
+		switch (Obj.GetObjectLayer())
+		{
+			case DrawLayer::DBackground: break;
+			case DrawLayer::DSprite: break;
+			case DrawLayer::DGUI: break;
+		};
+	}
+
+	for (auto Layer : GraphicsLayerList)
+	{
+		Layer.Draw(gfx);
+	}
+
 	//editor.Draw(gfx);
 	//button.Draw(gfx,1);
 }
